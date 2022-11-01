@@ -14,7 +14,7 @@ const signature = computed<string>(
       border='0'
       cellpadding='0'
       cellspacing='0'
-      style='border-collapse: separate!important; table-layout: fixed;'
+      style='font-family: Helvetica, Arial, sans-serif; font-size: 12px; border-collapse: separate!important; table-layout: fixed; line-height: 16px'
       width='320'
     >
       <tbody>
@@ -27,16 +27,16 @@ const signature = computed<string>(
               </g>
             </svg>
           </td>
-          <td align='left' valign='top' nowrap='nowrap' class='content-td' width="220">
-            <div class='content-pad'>
-              <p style='font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 16px; color: rgb(33, 33, 33); margin-bottom: 10px;'>
+          <td align='left' valign='top' nowrap='nowrap' class='content-td' width='220'>
+            <div class='content-pad' style="margin-bottom: 8px;">
+              <span style='font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 16px; color: rgb(33, 33, 33); display: block;'>
                 <span style='font-weight: bold; color: rgb(33, 33, 33); display: inline;font-size: 12px;' class='txt signature_name-target sig-hide'>
                   ${props.model.name}
                 </span><br>
                 <span style='color: rgb(33, 33, 33); display: inline;' class='txt signature_jobtitle-target sig-hide'>
                   ${props.model.position}
                 </span>
-                <span class='email-sep break' style='display: inline;'><br></span>
+                </span>
                 <a class='link email signature_email-target sig-hide'
                   href='mailto:${props.model.email}'
                   style='color: rgb(71, 124, 204); text-decoration: none; display: inline;'>
@@ -54,15 +54,15 @@ const signature = computed<string>(
                     `
                     : ''
                 }
-              </p>
-              <p style='font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 16px; margin-bottom: 10px;'>
-                <span style='font-weight: bold; color: rgb(33, 33, 33); display: inline;'
-                  class='txt signature_companyname-target sig-hide'>Smartup Technology</span><span class='company-sep break'
-                  style='display: inline;'><br>
-                </span>
+              </span>
+            </div>
+            <div>
+              <span style='font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 16px; margin-bottom: 10px;'>
+                <span style='font-weight: bold; color: rgb(33, 33, 33); display: block;'
+                  class='txt signature_companyname-target sig-hide'>Smartup Technology</span>
                 <a class='link signature_website-target sig-hide' href='https://smartup.ru'
                   style='color: rgb(71, 124, 204); text-decoration: none; display: inline;'>www.smartup.ru</a>
-              </p>
+              </span>
             </div>
           </td>
         </tr>
@@ -78,7 +78,10 @@ const signature = computed<string>(
 
 <style scoped>
 .preview {
+  /* max-width: 320px; */
+  padding: 2rem;
   margin: 0 auto;
-  max-width: 320px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
 }
 </style>
