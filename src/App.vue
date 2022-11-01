@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-import SignaturePreview from '@/components/SignaturePreview.vue'
+import { computed, reactive } from 'vue'
+import Button from '@/components/Button.vue'
+import Card from '@/components/Card.vue'
 import ProfileForm from '@/components/ProfileForm.vue'
+import SignaturePreview from '@/components/SignaturePreview.vue'
+import { useSignature } from '@/composables'
 
 import type { Profile } from '@/types'
 
@@ -11,13 +14,35 @@ const model = reactive<Profile>({
   position: '',
   phone: '',
 })
+
+const signature = computed(() => useSignature(model))
+
+const copy = () => {
+  try {
+    const blob = new Blob([signature.value], {
+      type: 'text/html',
+    })
+    navigator.clipboard.write([new ClipboardItem({ 'text/html': blob })])
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+const shouldDisplayCopy = computed<boolean>(() =>
+  Boolean(model.email && model.name && model.position)
+)
 </script>
 
 <template>
   <h1 class="title">Генератор подписи</h1>
-  <ProfileForm class="form" v-model.sync="model" />
+  <ProfileForm class="form" v-model="model" />
 
-  <SignaturePreview :model="model" />
+  <Card>
+    <SignaturePreview :text="signature" />
+    <Button v-if="shouldDisplayCopy" class="copy-button" @click="copy">
+      Копировать
+    </Button>
+  </Card>
 </template>
 
 <style scoped>
@@ -27,5 +52,11 @@ const model = reactive<Profile>({
 }
 .form {
   margin-bottom: 3rem;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
 }
 </style>
