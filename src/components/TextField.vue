@@ -40,10 +40,6 @@ const value = computed({
 </template>
 
 <style lang="scss" scoped>
-.text-field {
-  text-align: left;
-}
-
 .text-field__label {
   display: inline-block;
   margin: 0 0 8px;
@@ -54,13 +50,15 @@ const value = computed({
   display: block;
   width: 100%;
   margin: 0;
-  padding: 0.75rem 0.5rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  border-radius: 4px;
+  padding: 1rem;
+  border: 1px solid transparent;
+  background-color: rgba(0, 0, 0, 0.025);
+  border-radius: 10px;
   outline: none;
 
   &:focus {
-    border-color: rgba(0, 0, 0, 0.5);
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
 
   &::placeholder {

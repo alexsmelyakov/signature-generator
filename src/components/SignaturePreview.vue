@@ -17,6 +17,5 @@ const props = defineProps<Props>()
   position: relative;
   padding: 2rem;
   margin: 0 auto;
-  border-radius: 4px;
 }
 </style>

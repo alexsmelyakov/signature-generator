@@ -35,7 +35,7 @@ import YandexMailIcon from '@/assets/icons/yandex-mail-icon.svg'
 .settings-links__icons {
   display: grid;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   grid-auto-flow: column;
   gap: 1rem;
 }
@@ -50,6 +50,10 @@ import YandexMailIcon from '@/assets/icons/yandex-mail-icon.svg'
   border-radius: 50%;
   overflow: hidden;
   border: 1px solid rgba(0, 0, 0, 0.05);
+
+  &:hover {
+    border-color: rgb(72, 113, 251);
+  }
 }
 
 .settings-links__icon-img {
