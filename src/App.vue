@@ -1,19 +1,40 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import { reactive } from 'vue'
+import SignaturePreview from '@/components/SignaturePreview.vue'
+
+import type { Profile } from '@/types'
+
+const model = reactive<Profile>({
+  name: '',
+  email: '',
+  position: '',
+  phone: '',
+})
 </script>
 
 <template>
+  <h1>Генератор подписи</h1>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <label>Имя</label>
+    <input type="text" v-model="model.name" />
   </div>
-  <HelloWorld msg="Vite + Vue" />
+
+  <div>
+    <label>Электронная почта</label>
+    <input type="text" v-model="model.email" />
+  </div>
+
+  <div>
+    <label>Должность</label>
+    <input type="text" v-model="model.position" />
+  </div>
+
+  <div>
+    <label>Номер телефона (не обязятельно)</label>
+    <input type="text" v-model="model.phone" />
+  </div>
+
+  <SignaturePreview :model="model" />
 </template>
 
 <style scoped>
