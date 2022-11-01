@@ -6,6 +6,7 @@ type Props = {
   label: string
   optional?: boolean
   required?: boolean
+  placeholder?: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -29,7 +30,12 @@ const value = computed({
         (не обязательно)
       </template>
     </label>
-    <input class="text-field__input" type="text" v-model="value" />
+    <input
+      class="text-field__input"
+      type="text"
+      :placeholder="placeholder"
+      v-model="value"
+    />
   </div>
 </template>
 
@@ -55,6 +61,11 @@ const value = computed({
 
   &:focus {
     border-color: rgba(0, 0, 0, 0.5);
+  }
+
+  &::placeholder {
+    font-style: italic;
+    font-size: 85%;
   }
 }
 </style>

@@ -19,13 +19,33 @@ const model = computed({
 
 <template>
   <div class="profile-form">
-    <TextField label="Имя" required v-model="model.name" />
+    <TextField
+      label="Имя"
+      placeholder="например, Николай Иванов"
+      required
+      v-model="model.name"
+    />
 
-    <TextField label="Электронная почта" required v-model="model.email" />
+    <TextField
+      label="Электронная почта"
+      placeholder="example@example.com"
+      required
+      v-model="model.email"
+    />
 
-    <TextField label="Должность" required v-model="model.position" />
+    <TextField
+      label="Должность"
+      placeholder="например, ведущий инженер"
+      required
+      v-model="model.position"
+    />
 
-    <TextField label="Номер телефона" optional v-model="model.phone" />
+    <TextField
+      label="Номер телефона"
+      placeholder="в формате +7-xxx-xxx-xxxx"
+      optional
+      v-model="model.phone"
+    />
   </div>
 </template>
 

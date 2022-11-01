@@ -5,13 +5,14 @@ import Card from '@/components/Card.vue'
 import ProfileForm from '@/components/ProfileForm.vue'
 import SignaturePreview from '@/components/SignaturePreview.vue'
 import { useSignature } from '@/composables'
+import { defaultValues } from '@/config'
 
 import type { Profile } from '@/types'
 
 const model = reactive<Profile>({
-  name: '',
-  email: '',
-  position: '',
+  name: defaultValues.name,
+  email: defaultValues.email,
+  position: defaultValues.position,
   phone: '',
 })
 
