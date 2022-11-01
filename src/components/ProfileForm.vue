@@ -1,8 +1,10 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import type { Profile } from '@/types'
+import { defaultValues } from '@/config'
 import TextField from './TextField.vue'
+
+import type { Profile } from '@/types'
 
 type Props = {
   modelValue: Profile
@@ -21,21 +23,21 @@ const model = computed({
   <div class="profile-form">
     <TextField
       label="Имя"
-      placeholder="например, Николай Иванов"
+      :placeholder="`например, ${defaultValues.name}`"
       required
       v-model="model.name"
     />
 
     <TextField
       label="Электронная почта"
-      placeholder="example@example.com"
+      :placeholder="`например, ${defaultValues.email}`"
       required
       v-model="model.email"
     />
 
     <TextField
       label="Должность"
-      placeholder="например, ведущий инженер"
+      :placeholder="`например, ${defaultValues.position}`"
       required
       v-model="model.position"
     />
