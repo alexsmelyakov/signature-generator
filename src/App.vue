@@ -9,6 +9,7 @@ import { useSignature } from '@/composables'
 import { defaultValues } from '@/config'
 
 import type { Profile } from '@/types'
+import Support from './components/Support.vue'
 
 const model = reactive<Profile>({
   name: defaultValues.name,
@@ -62,6 +63,8 @@ const shouldDisplayCopy = computed<boolean>(() =>
   </Card>
 
   <SettingsLinks />
+
+  <Support class="support" />
 </template>
 
 <style lang="scss" scoped>
@@ -87,5 +90,9 @@ const shouldDisplayCopy = computed<boolean>(() =>
 
 .preview-card {
   margin-bottom: 3rem;
+}
+
+.support {
+  margin-top: 4rem;
 }
 </style>

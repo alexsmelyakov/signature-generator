@@ -16,3 +16,5 @@ export const websiteAddress = 'www.smartup.ru'
 export const websiteUrl = 'https://smartup.ru'
 
 export const companyName = 'Smartup Technology'
+
+export const supportLink = 'https://t.me/alex_smelyakov'

@@ -52,7 +52,7 @@ import YandexMailIcon from '@/assets/icons/yandex-mail-icon.svg'
   border: 1px solid rgba(0, 0, 0, 0.05);
 
   &:hover {
-    border-color: rgb(72, 113, 251);
+    border-color: rgba(0, 0, 0, 0.15);
   }
 }
 
