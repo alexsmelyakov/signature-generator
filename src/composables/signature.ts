@@ -1,4 +1,6 @@
-import { Profile } from '@/types'
+import { logoUrl } from '@/config'
+
+import type { Profile } from '@/types'
 
 export const useSignature = (model: Profile): string => `
   <span>&nbsp;</span>
@@ -11,10 +13,10 @@ export const useSignature = (model: Profile): string => `
     >
       <tbody>
         <tr>
-          <td align='center' valign='top' class='logo-td' style='text-align: center; padding: 4px 16px 4px 8px'>
-            <img src="https://static.tildacdn.com/tild3638-6661-4866-b064-613964376434/signature-logo.png" width="80" alt="Smartup Technology">
+          <td align='left' valign='top' class='logo-td' style='text-align: left; padding: 4px 0'>
+            <img src="${logoUrl}" width="64" alt="Smartup Technology">
           </td>
-          <td align='left' valign='top' nowrap='nowrap' class='content-td' width='220'>
+          <td align='left' valign='top' nowrap='nowrap' class='content-td' width='224'>
             <div class='content-pad' style="margin-bottom: 8px;">
               <span style='font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 16px; color: rgb(33, 33, 33); display: block;'>
                 <span style='font-weight: bold; color: rgb(33, 33, 33); display: inline;font-size: 12px;' class='txt signature_name-target sig-hide'>
