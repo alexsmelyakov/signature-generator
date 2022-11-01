@@ -4,6 +4,7 @@ import Button from '@/components/Button.vue'
 import Card from '@/components/Card.vue'
 import ProfileForm from '@/components/ProfileForm.vue'
 import SignaturePreview from '@/components/SignaturePreview.vue'
+import SettingsLinks from '@/components/SettingsLinks.vue'
 import { useSignature } from '@/composables'
 import { defaultValues } from '@/config'
 
@@ -38,12 +39,14 @@ const shouldDisplayCopy = computed<boolean>(() =>
   <h1 class="title">Генератор подписи</h1>
   <ProfileForm class="form" v-model="model" />
 
-  <Card>
+  <Card class="preview-card">
     <SignaturePreview :text="signature" />
     <Button v-if="shouldDisplayCopy" class="copy-button" @click="copy">
       Копировать
     </Button>
   </Card>
+
+  <SettingsLinks />
 </template>
 
 <style scoped>
@@ -59,5 +62,9 @@ const shouldDisplayCopy = computed<boolean>(() =>
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.preview-card {
+  margin-bottom: 3rem;
 }
 </style>
