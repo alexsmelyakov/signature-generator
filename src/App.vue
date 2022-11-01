@@ -45,35 +45,58 @@ const shouldDisplayCopy = computed<boolean>(() =>
 </script>
 
 <template>
-  <h1 class="title">Генератор подписи</h1>
-  <ProfileForm class="form" v-model="model" />
+  <div class="app">
+    <h1 class="title">Генератор подписи</h1>
+    <ProfileForm class="form" v-model="model" />
 
-  <Card class="preview-card">
-    <SignaturePreview :text="signature" />
+    <Card class="preview-card">
+      <SignaturePreview :text="signature" />
 
-    <div class="preview-card__actions">
-      <Button v-if="shouldDisplayCopy" class="copy-button" @click="copy">
-        Копировать
-      </Button>
+      <div class="preview-card__actions">
+        <Button v-if="shouldDisplayCopy" class="copy-button" @click="copy">
+          Копировать
+        </Button>
 
-      <Button v-if="shouldDisplayCopy" class="copy-button" @click="copyAsHTML">
-        Копировать как HTML
-      </Button>
-    </div>
-  </Card>
+        <Button
+          v-if="shouldDisplayCopy"
+          class="copy-button"
+          @click="copyAsHTML"
+        >
+          Копировать как HTML
+        </Button>
+      </div>
+    </Card>
 
-  <SettingsLinks />
+    <SettingsLinks />
 
-  <Support class="support" />
+    <Support class="support" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
+.app {
+  padding: 2rem 1rem;
+
+  @include respond-to(768px) {
+    padding: 2rem;
+  }
+}
+
 .title {
   font-size: 32px;
-  margin: 0 0 4rem;
+  margin: 0 0 2rem;
+
+  @include respond-to(768px) {
+    margin: 0 0 4rem;
+  }
 }
+
 .form {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+
+  @include respond-to(768px) {
+    margin-bottom: 3rem;
+  }
 }
 
 .preview-card__actions {
@@ -89,7 +112,11 @@ const shouldDisplayCopy = computed<boolean>(() =>
 }
 
 .preview-card {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
+
+  @include respond-to(768px) {
+    margin-bottom: 3rem;
+  }
 }
 
 .support {

@@ -29,7 +29,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 100vw;
   min-height: 100vh;
 }
 
@@ -42,7 +42,6 @@ h1 {
   width: 100%;
   max-width: 720px;
   margin: 0 auto;
-  padding: 2rem;
 }
 
 @media (prefers-color-scheme: light) {

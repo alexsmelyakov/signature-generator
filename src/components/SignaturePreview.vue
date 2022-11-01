@@ -15,7 +15,7 @@ const props = defineProps<Props>()
 <style lang="scss" scoped>
 .signature-preview {
   position: relative;
-  padding: 2rem;
+  padding: 3rem 2rem 1rem;
   margin: 0 auto;
 }
 </style>
