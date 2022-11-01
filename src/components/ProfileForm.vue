@@ -22,6 +22,7 @@ const model = computed({
 <template>
   <div class="profile-form">
     <TextField
+      name="name"
       label="Имя"
       :placeholder="`например, ${defaultValues.name}`"
       required
@@ -29,6 +30,7 @@ const model = computed({
     />
 
     <TextField
+      name="email"
       label="Электронная почта"
       :placeholder="`например, ${defaultValues.email}`"
       required
@@ -43,6 +45,7 @@ const model = computed({
     />
 
     <TextField
+      name="phone"
       label="Номер телефона"
       placeholder="в формате +7-xxx-xxx-xxxx"
       optional

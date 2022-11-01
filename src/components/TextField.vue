@@ -1,3 +1,9 @@
+<script lang="ts">
+export default {
+  inheritAttrs: false,
+}
+</script>
+
 <script lang="ts" setup>
 import { computed } from 'vue'
 
@@ -32,6 +38,7 @@ const value = computed({
     </label>
     <input
       class="text-field__input"
+      v-bind="$attrs"
       type="text"
       :placeholder="placeholder"
       v-model="value"
