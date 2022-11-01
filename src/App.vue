@@ -30,6 +30,14 @@ const copy = () => {
   }
 }
 
+const copyAsHTML = () => {
+  try {
+    navigator.clipboard.writeText(signature.value)
+  } catch (error) {
+    console.error(error)
+  }
+}
+
 const shouldDisplayCopy = computed<boolean>(() =>
   Boolean(model.email && model.name && model.position)
 )
@@ -41,15 +49,22 @@ const shouldDisplayCopy = computed<boolean>(() =>
 
   <Card class="preview-card">
     <SignaturePreview :text="signature" />
-    <Button v-if="shouldDisplayCopy" class="copy-button" @click="copy">
-      Копировать
-    </Button>
+
+    <div class="preview-card__actions">
+      <Button v-if="shouldDisplayCopy" class="copy-button" @click="copy">
+        Копировать
+      </Button>
+
+      <Button v-if="shouldDisplayCopy" class="copy-button" @click="copyAsHTML">
+        Копировать как HTML
+      </Button>
+    </div>
   </Card>
 
   <SettingsLinks />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .title {
   font-size: 32px;
   margin: 0 0 4rem;
@@ -58,10 +73,16 @@ const shouldDisplayCopy = computed<boolean>(() =>
   margin-bottom: 3rem;
 }
 
-.copy-button {
+.preview-card__actions {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+}
+
+.copy-button {
+  & + & {
+    margin-left: 0.5rem;
+  }
 }
 
 .preview-card {
