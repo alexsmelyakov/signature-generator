@@ -50,7 +50,7 @@ export const useSignature = (model: Profile): string => `
                 `
                   <br />
                   <a href='tel://${model.phone}'
-                    style='#1976d2; text-decoration: none; display: inline;'
+                    style='color: #1976d2; text-decoration: none; display: inline;'
                   >${model.phone}</a>
                 `
               }
