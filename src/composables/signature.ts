@@ -1,6 +1,6 @@
-import { companyName, logoUrl, websiteAddress, websiteUrl } from '@/config'
+import { companyName, logoUrl, websiteAddress, websiteUrl } from '@/config';
 
-import type { Profile } from '@/types'
+import type { Profile } from '@/types';
 
 export const useSignature = (model: Profile): string => `
   <span>&nbsp;</span>
@@ -13,10 +13,10 @@ export const useSignature = (model: Profile): string => `
     >
       <tbody>
         <tr>
-          <td align='left' valign='top' style='text-align: left; padding: 4px 0'>
-            <img src="${logoUrl}" width="64" alt="Smartup Technology">
+          <td align='left' valign='top' style='text-align: left; padding: 0 12px 0 0'>
+            <img src="${logoUrl}" width="100%" alt="Smartup Technology">
           </td>
-          <td align='left' valign='top' nowrap='nowrap' width='224'>
+          <td align='left' valign='top' nowrap='nowrap' width='216'>
             <div style="margin-bottom: 8px;">
               ${
                 model.name &&
@@ -76,4 +76,4 @@ export const useSignature = (model: Profile): string => `
       </tbody>
     </table>
     <span>&nbsp;</span>
-  `
+  `;
