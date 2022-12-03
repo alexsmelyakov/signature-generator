@@ -1,47 +1,47 @@
 <script setup lang="ts">
-import { computed, reactive } from 'vue'
-import Button from '@/components/Button.vue'
-import Card from '@/components/Card.vue'
-import ProfileForm from '@/components/ProfileForm.vue'
-import SignaturePreview from '@/components/SignaturePreview.vue'
-import SettingsLinks from '@/components/SettingsLinks.vue'
-import { useSignature } from '@/composables'
-import { defaultValues } from '@/config'
+import { computed, reactive } from 'vue';
+import { useLocalStorage } from '@vueuse/core';
 
-import type { Profile } from '@/types'
-import Support from './components/Support.vue'
+import { defaultValues } from '@/config';
+import Button from '@/components/Button.vue';
+import Card from '@/components/Card.vue';
+import ProfileForm from '@/components/ProfileForm.vue';
+import SignaturePreview from '@/components/SignaturePreview.vue';
+import SettingsLinks from '@/components/SettingsLinks.vue';
+import { useSignature } from '@/composables';
 
-const model = reactive<Profile>({
-  name: defaultValues.name,
-  email: defaultValues.email,
-  position: defaultValues.position,
-  phone: '',
-})
+import Support from './components/Support.vue';
 
-const signature = computed(() => useSignature(model))
+import type { Profile } from '@/types';
+
+const model = useLocalStorage<Profile>('profile', {
+  ...defaultValues,
+});
+
+const signature = computed(() => useSignature(model.value));
 
 const copy = () => {
   try {
     const blob = new Blob([signature.value], {
       type: 'text/html',
-    })
-    navigator.clipboard.write([new ClipboardItem({ 'text/html': blob })])
+    });
+    navigator.clipboard.write([new ClipboardItem({ 'text/html': blob })]);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
+};
 
 const copyAsHTML = () => {
   try {
-    navigator.clipboard.writeText(signature.value)
+    navigator.clipboard.writeText(signature.value);
   } catch (error) {
-    console.error(error)
+    console.error(error);
   }
-}
+};
 
 const shouldDisplayCopy = computed<boolean>(() =>
-  Boolean(model.email && model.name && model.position)
-)
+  Boolean(model.value.email && model.value.name && model.value.position)
+);
 </script>
 
 <template>
