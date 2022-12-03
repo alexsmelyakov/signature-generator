@@ -13,14 +13,12 @@ const props = defineProps<{
   model: Profile;
 }>();
 
-const signature = computed(() =>
-  useSignature(props.model, {
-    companyName,
-    logoUrl,
-    websiteAddress,
-    websiteUrl,
-  })
-);
+const signature = useSignature(props.model, {
+  companyName,
+  logoUrl,
+  websiteAddress,
+  websiteUrl,
+});
 
 const copy = () => {
   try {

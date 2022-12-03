@@ -1,3 +1,5 @@
+import { computed } from 'vue';
+
 import type { Profile } from '@/types';
 
 export const useSignature = (
@@ -8,7 +10,9 @@ export const useSignature = (
     websiteAddress: string;
     websiteUrl: string;
   }
-): string => `
+) => {
+  const signature = computed<string>(
+    () => `
   <span>&nbsp;</span>
     <table
       border='0'
@@ -82,4 +86,8 @@ export const useSignature = (
       </tbody>
     </table>
     <span>&nbsp;</span>
-  `;
+  `
+  );
+
+  return signature;
+};
