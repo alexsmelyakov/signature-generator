@@ -49,6 +49,7 @@ const model = computed({
       label="Номер телефона"
       placeholder="в формате +7-xxx-xxx-xxxx"
       optional
+      v-maska="'+7-###-###-####'"
       v-model="model.phone"
     />
   </div>
