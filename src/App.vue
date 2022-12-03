@@ -1,71 +1,23 @@
 <script setup lang="ts">
-import { computed, reactive } from 'vue';
 import { useLocalStorage } from '@vueuse/core';
 
 import { defaultValues } from '@/config';
-import Button from '@/components/Button.vue';
-import Card from '@/components/Card.vue';
-import ProfileForm from '@/components/ProfileForm.vue';
-import SignaturePreview from '@/components/SignaturePreview.vue';
-import SettingsLinks from '@/components/SettingsLinks.vue';
-import { useSignature } from '@/composables';
-
-import Support from './components/Support.vue';
+import { ProfileForm, SettingsLinks, Signature, Support } from '@/widgets';
 
 import type { Profile } from '@/types';
 
 const model = useLocalStorage<Profile>('profile', {
   ...defaultValues,
 });
-
-const signature = computed(() => useSignature(model.value));
-
-const copy = () => {
-  try {
-    const blob = new Blob([signature.value], {
-      type: 'text/html',
-    });
-    navigator.clipboard.write([new ClipboardItem({ 'text/html': blob })]);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const copyAsHTML = () => {
-  try {
-    navigator.clipboard.writeText(signature.value);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-const shouldDisplayCopy = computed<boolean>(() =>
-  Boolean(model.value.email && model.value.name && model.value.position)
-);
 </script>
 
 <template>
   <div class="app">
     <h1 class="title">Генератор подписи</h1>
+
     <ProfileForm class="form" v-model="model" />
 
-    <Card class="preview-card">
-      <SignaturePreview :text="signature" />
-
-      <div class="preview-card__actions">
-        <Button v-if="shouldDisplayCopy" class="copy-button" @click="copy">
-          Копировать
-        </Button>
-
-        <Button
-          v-if="shouldDisplayCopy"
-          class="copy-button"
-          @click="copyAsHTML"
-        >
-          Копировать как HTML
-        </Button>
-      </div>
-    </Card>
+    <Signature :model="model" />
 
     <SettingsLinks />
 
@@ -92,26 +44,6 @@ const shouldDisplayCopy = computed<boolean>(() =>
 }
 
 .form {
-  margin-bottom: 2rem;
-
-  @include respond-to(768px) {
-    margin-bottom: 3rem;
-  }
-}
-
-.preview-card__actions {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-}
-
-.copy-button {
-  & + & {
-    margin-left: 0.5rem;
-  }
-}
-
-.preview-card {
   margin-bottom: 2rem;
 
   @include respond-to(768px) {

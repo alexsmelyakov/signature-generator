@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { supportLink } from '@/config'
+import { supportLink } from './config';
 </script>
 
 <template>

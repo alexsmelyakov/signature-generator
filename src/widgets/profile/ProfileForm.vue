@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed } from 'vue';
 
-import { defaultValues } from '@/config'
-import TextField from './TextField.vue'
+import { defaultValues } from '@/config';
 
-import type { Profile } from '@/types'
+import type { Profile } from '@/types';
+import { TextField } from '@/shared';
 
 type Props = {
-  modelValue: Profile
-}
+  modelValue: Profile;
+};
 
-const props = defineProps<Props>()
-const emit = defineEmits(['update:modelValue'])
+const props = defineProps<Props>();
+const emit = defineEmits(['update:modelValue']);
 
 const model = computed({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', value),
-})
+});
 </script>
 
 <template>

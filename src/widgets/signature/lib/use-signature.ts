@@ -1,8 +1,14 @@
-import { companyName, logoUrl, websiteAddress, websiteUrl } from '@/config';
-
 import type { Profile } from '@/types';
 
-export const useSignature = (model: Profile): string => `
+export const useSignature = (
+  model: Profile,
+  options: {
+    companyName: string;
+    logoUrl: string;
+    websiteAddress: string;
+    websiteUrl: string;
+  }
+): string => `
   <span>&nbsp;</span>
     <table
       border='0'
@@ -14,7 +20,7 @@ export const useSignature = (model: Profile): string => `
       <tbody>
         <tr>
           <td align='left' valign='top' style='text-align: left; padding: 0 12px 0 0'>
-            <img src="${logoUrl}" width="100%" alt="Smartup Technology">
+            <img src="${options.logoUrl}" width="100%" alt="Smartup Technology">
           </td>
           <td align='left' valign='top' nowrap='nowrap' width='216'>
             <div style="margin-bottom: 8px;">
@@ -60,14 +66,14 @@ export const useSignature = (model: Profile): string => `
                 <span
                   style='font-weight: bold; color: rgb(33, 33, 33); display: inline;'
                 >
-                  ${companyName}
+                  ${options.companyName}
                 </span>
                 <br>
                 <a
                   style='color: #1976d2; text-decoration: none; display: inline;'
-                  href='${websiteUrl}'
+                  href='${options.websiteUrl}'
                 >
-                  ${websiteAddress}
+                  ${options.websiteAddress}
                 </a>
               </span>
             </div>

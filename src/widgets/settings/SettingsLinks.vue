@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import { gmailSettingsUrl, yandexMailSettingsUrl } from '@/config'
+import { gmailSettingsUrl, yandexMailSettingsUrl } from './config';
 
-import GmailIcon from '@/assets/icons/gmail-icon.svg'
-import YandexMailIcon from '@/assets/icons/yandex-mail-icon.svg'
+import GmailIcon from '@/assets/icons/gmail-icon.svg';
+import YandexMailIcon from '@/assets/icons/yandex-mail-icon.svg';
 </script>
 
 <template>
