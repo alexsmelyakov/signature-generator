@@ -24,7 +24,9 @@ export const useSignature = (
       <tbody>
         <tr>
           <td align='left' valign='top' style='text-align: left; padding: 0 12px 0 0'>
-            <img src="${options.logoUrl}" width="100%" alt="Smartup Technology">
+            <img src="${
+              options.logoUrl
+            }" width="92" height="43" alt="Smartup Technology">
           </td>
           <td align='left' valign='top' nowrap='nowrap' width='216'>
             <div style="margin-bottom: 8px;">
